@@ -8,6 +8,11 @@
 
 
 {% block contents %}
+<script>
+  var today = new Date
+  document.write("本日の日付")
+  document.write(today.getFullYear() + "/" + (today.getMonth()+1) + "/" + today.getDate())
+</script>
   <header>
     <section id=head>
       <h1>レンドレント</h1>
