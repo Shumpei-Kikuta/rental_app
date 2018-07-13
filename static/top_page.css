@@ -1,0 +1,78 @@
+/* the whole page */
+h1{
+  text-align: center;
+}
+
+h3{
+  color: white;
+}
+
+/* header */
+#sign{
+  position: absolute;
+  right : 0px;
+  top : 10px;
+}
+
+#mypage{
+  position: absolute;
+  right : 100px;
+  top : 10px;
+}
+
+#user{
+  position: absolute;
+  right : 10px;
+  top : 10px;
+  color: white;
+}
+
+header{
+  position : relative;
+}
+
+#attention a:hover{
+  opacity: 0.5;
+}
+
+/* various_goods */
+/* various_goods.cssを利用 */
+
+/* 検索 */
+.search_engine{
+  text-align: center;
+}
+
+.search_engine [type=text]:hover{
+  border-color: blue;
+}
+
+[type="text"]{
+  width:500px;
+  height:40px;
+  border-radius: 10px;
+  font-size: 0.7em;
+}
+
+/* various_goods */
+
+/* post_goods */
+.post_goods{
+  margin-top: 100px;
+  margin-left: 200px;
+  margin-right: auto;
+  border: 5px solid black;
+  width: 400px;
+  float: left;
+  /* border-radius: 200px; */
+}
+
+.chat{
+  margin-top: 100px;
+  margin-left:auto;
+  margin-right: 200px;
+  width: 400px;
+  border: 5px solid black;
+  margin-bottom: 100px;
+  /* border-radius: 200px; */
+}

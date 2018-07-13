@@ -1,0 +1,15 @@
+{% extends "page_template.html" %}
+{% block title %}サインアップ{% endblock %}
+{% block head %}
+{{super()}}
+{% endblock %}
+
+{% block contents %}
+  <section id=error>
+    <h1>入力が正しくありません。</h1>
+  </section>
+{% endblock %}
+
+{% block footer %}
+  <a href="#" onclick="history.back(); return false;">入力画面へ</a>
+{% endblock %}

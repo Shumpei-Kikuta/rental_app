@@ -1,0 +1,39 @@
+{% extends "page_template.html" %}
+{% block title %}チャットスペース{% endblock %}
+{% block head %}
+{{super()}}
+{% endblock %}
+
+{% block contents %}
+<header>>
+  <h1>チャット画面</h1>
+  <p>あなたがやりとり中の商品が表示されます。</p>
+</header>
+
+ <section class=lend_deal>
+    <h2>貸している取引</h2>
+    {% for deal in lend_deal %}
+    <h3><a href="/chat/detail/{{deal.deal_id}}">貸している商品：
+      {{goods.query.filter(goods.goods_id==deal.goods_id).first().goods_name}}</a></h3>
+    <h3>
+      {{user.query.filter(user.id==deal.borrower_id).first().username}}さんに貸しています
+    </h3>
+    {% endfor %}
+</section>
+
+<section class=borrow_deal>
+  <h2>借りている取引</h2>
+  {% for deal in borrow_deal %}
+  <h3><a href="/chat/detail/{{deal.deal_id}}">借りている商品：
+    {{goods.query.filter(goods.goods_id==deal.goods_id).first().goods_name}}</a></h3>
+  <h3>
+    {{user.query.filter(user.id==deal.lender_id).first().username}}さんから借りています．
+  </h3>
+  {% endfor %}
+</section>
+
+{% endblock %}
+
+{% block footer %}
+  <a href="#" onclick="history.back(); return false;">前に戻る</a>
+{% endblock %}

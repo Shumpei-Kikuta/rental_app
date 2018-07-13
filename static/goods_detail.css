@@ -1,0 +1,18 @@
+
+.all_container{
+  width:1000px;
+  margin:auto;
+  border:solid;
+}
+.goods_detail{
+  text-align:center;
+}
+
+.condition{
+  width: 600px;
+  height: 500px;
+}
+
+.condition p{
+  overflow: scroll;
+}

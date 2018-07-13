@@ -1,0 +1,81 @@
+{% extends "page_template.html" %}
+{% block title %}page top{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="/static/chat_detail.css">
+{{super()}}
+{% endblock %}
+
+{% block contents %}
+<header>
+  チャットをしましょう！
+</header>
+
+<!-- チャットの投稿画面 -->
+<section class=chat_space>
+  <h1>チャット</h1>
+  <form method="POST" action="/chat_update" enctype="multipart/form-data">
+    <section class=chat_contents>
+      {% for chat_content in chat_list %}
+        {% if chat_content.speaker_id == current_user.id %}
+          <div class=right_name>
+            <p>{{chat_content.speaker}}</p>
+          </div>
+          <div class=right_chat>
+            <p>{{chat_content.chat_contents}}</p>
+          </div>
+        {% else %}
+          <div class=left_name>
+            <p>{{chat_content.speaker}}</p>
+          </div>
+          <div class=left_chat>
+            <p>{{chat_content.chat_contents}}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+      <section class=post_chat>
+        <input placeholder="チャットをしましょう" name="one_chat" type="text"/>
+        <input type="submit" value="送信">
+        <input type="hidden" name=speaker value={{current_user.id}}>
+        <input type="hidden" name=deal_id value={{deal.deal_id}}>
+      </section>
+    </form>
+  </section>
+
+</section>
+
+<!-- 取引の状態を貸す人／借りる人が変更する -->
+<section class=deal_phase>
+  <h1>取引状態の更新</h1>
+  <form method="POST" action="/update_phase" enctype="multipart/form-data">
+    <select name="phase">
+      <option selected hidden>{{deal.lender_check if deal.lender_id==current_user.id else deal.borrower_check}}</option>
+      <option value="交渉中">交渉中</option>
+      <option value="レンタル中">レンタル中</option>
+      <option value="返却済み">返却済み</option>
+    </select>
+    <input type="hidden" name=submitter_id value={{current_user.id}}>
+    <input type="hidden" name=deal_id value={{deal.deal_id}}>
+    <input type="submit" value="更新">
+  </form>
+</section>
+
+<section class=now_condition>
+  <h1>現在の取引状態</h1>
+  {% if deal.lender_check=="交渉中" and deal.borrower_check=="交渉中" %}
+    <h3>交渉中．商品は{{lender_name}}さんが持っています．</h3>
+  {% elif deal.lender_check=="レンタル中" and deal.borrower_check=="レンタル中" %}
+    <h3>レンタル中．商品は{{borrower_name}}さんが持っています．</h3>
+  {% elif deal.lender_check=="返却済み" and deal.borrower_check=="返却済み" %}
+    <h3>返却済み．商品は{{lender_name}}さんが持っています．</h3>
+  {% else %}
+    <h3>両者の取引状態が一致していません．</h3>
+  {% endif %}
+</section>
+
+<p><a href="#top">ページの上へ</a></p>
+
+{% endblock %}
+
+{% block footer %}
+  <a href="/top_page">TOPへ</a>
+{% endblock %}

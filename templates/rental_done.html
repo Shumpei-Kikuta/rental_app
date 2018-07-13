@@ -1,0 +1,16 @@
+{% extends "page_template.html" %}
+{% block title %}レンタル完了{% endblock %}
+{% block head %}
+{{super()}}
+{% endblock %}
+
+{% block contents %}
+  <section class=complete_rental>
+  <h1>レンタルが完了しました。</h1>
+  <h3><a href="/chat/detail/{{new_deal.deal_id}}">チャットページへ</a></h1>
+  </section>
+{% endblock %}
+
+{% block footer %}
+  <a href="/top_page">TOPへ</a>
+{% endblock %}

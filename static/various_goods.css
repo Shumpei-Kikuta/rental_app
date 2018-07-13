@@ -1,0 +1,31 @@
+
+/* div="various_goods"に適用 */
+.various_goods{
+  margin:50px 100px 100px 100px;
+  text-align: center;
+}
+
+.one_good{
+  height:500px;
+  border: 3px solid brown;
+  width: 290px;
+  display: inline-block;
+  margin: 10px;
+  text-align :center;
+  border-radius: 10px;
+  float: left;
+}
+
+img:hover{
+  opacity: 0.5;
+}
+
+img{
+  margin: none;
+}
+
+ .clearfix:after{
+   content: " ";
+   display: table;
+   clear: both;
+ }
