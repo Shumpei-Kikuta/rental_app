@@ -4,10 +4,12 @@ from werkzeug.utils import secure_filename
 import psycopg2
 import psycopg2.extras
 from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 from flask_login import LoginManager, login_user, UserMixin,logout_user,current_user
+from flask_migrate import Migrate
+from flask.ext.scss import Scss
 
 app = Flask(__name__)
+Scss(app,static_dir="static",asset_dir="assets")
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://localhost/web_eng'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
