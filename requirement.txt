@@ -1,2 +1,7 @@
+###### Requirements without Version Specifiers ######`
 flask 
-sql_alchemy
+psycopg2
+flask-sqlalchemy
+flask_login
+flask_migrate
+
